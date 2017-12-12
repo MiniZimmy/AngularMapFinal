@@ -6,9 +6,8 @@ import { RouterModule } from '@angular/router';
 
 import { MapComponent } from './map.component';
 
-import { MarkerModule } from './../marker';
+import { MarkerModule, PlacesModule } from './../../components';
 import { MarkerServiceModule } from './../../services';
-import { PlacesModule } from './../places';
 
 
 @NgModule({

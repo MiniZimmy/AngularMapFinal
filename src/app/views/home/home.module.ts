@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CodeTabModule, SectionTitleModule } from './../../common';
+import { CodeTabModule, SectionTitleModule } from './../../components';
 // tslint:disable-next-line:max-line-length
 import { ComponentSectionComponent, DataBindingSectionComponent,
         MarkersSectionComponent, ModuleSectionComponent,

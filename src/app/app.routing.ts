@@ -2,8 +2,8 @@ import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {path: 'home', loadChildren: './components/home/home.module#HomeModule'},
-  {path: 'map', loadChildren: './components/map/index#MapModule'},
+  {path: 'home', loadChildren: './views/home/home.module#HomeModule'},
+  {path: 'map', loadChildren: './views/map/index#MapModule'},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: '**', redirectTo: 'home'}
 ];

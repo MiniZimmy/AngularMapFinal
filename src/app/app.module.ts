@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { Header } from './common';
+import { Header } from './components';
 
 import { AppComponent } from './app.component';
 import { APP_ROUTING } from './app.routing';
