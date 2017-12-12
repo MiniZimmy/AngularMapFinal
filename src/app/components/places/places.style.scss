@@ -1,0 +1,30 @@
+@import "variables";
+.group {
+  border: 1px solid $site-primary-color;
+  padding: 1.2rem;
+  background: white;
+  box-shadow: 5px 5px 2px #999999;
+  .input-group {
+    margin-top: .8rem;
+  }
+  .btn-container {
+    text-align: right;
+    .btn {
+      margin-top: .8rem;
+      background-color: $button-background-color;
+      border-color: $button-background-color;
+    }
+  }
+
+  li {
+    padding-top: .3rem;
+    padding-bottom: .3rem;
+    cursor: pointer;
+    color: #888;
+    &:hover {
+      background-color: #607D8B;
+      color: white;
+    }
+  }
+
+}

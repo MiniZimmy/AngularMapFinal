@@ -1,0 +1,11 @@
+<agm-marker [latitude]="marker.coordinates.latitude" [longitude]="marker.coordinates.longitude">
+  <agm-info-window *ngIf="marker.title">
+    <div class="container row">
+      <img class="col-md-8" src="{{marker.picture}}" *ngIf="marker.picture"/>
+      <div class="col">
+        <h1 class="marker-title">{{marker.title}}</h1>
+        <p class="marker-label" *ngIf="marker.label">{{marker.label}}</p>
+      </div>
+    </div>
+  </agm-info-window>
+</agm-marker>

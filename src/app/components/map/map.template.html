@@ -1,0 +1,43 @@
+<div class="map container-fluid row">
+  <div class="col-md-4">
+    <div class="form-group group">
+      <h2>Centrer la carte</h2>
+      <div class="row input-group">
+        <label for="latitude" class="col-md-4">Latitude:</label>
+        <input type="number" class="form-control col-md-8" id="latitude" [(ngModel)]="coordinates.latitude" [ngModelOptions]="{updateOn: 'blur'}"/>
+      </div>
+      <div class="row input-group">
+        <label for="longitude" class="col-md-4">Longitude:</label>
+        <input type="number" class="form-control col-md-8" id="longitude" [(ngModel)]="coordinates.longitude" [ngModelOptions]="{updateOn: 'blur'}"/>
+      </div>
+    </div>
+    <div class="form-group group">
+      <h2>Ajout d'un Marker</h2>
+      <div class="row input-group">
+        <label for="latitude-marker" class="col-md-4">Latitude:</label>
+        <input type="number" class="form-control col-md-8" id="latitude-marker" [(ngModel)]="markerInput.coordinates.latitude"/>
+      </div>
+      <div class="row input-group">
+        <label for="longitude-marker" class="col-md-4">Longitude:</label>
+        <input type="number" class="form-control col-md-8" id="longitude-marker" [(ngModel)]="markerInput.coordinates.longitude"/>
+      </div>
+      <div class="row input-group">
+        <label for="title-marker" class="col-md-4">Titre:</label>
+        <input type="text" class="form-control col-md-8" id="title-marker" placeholder="Titre du marker" [(ngModel)]="markerInput.title"/>
+      </div>
+      <div class="row input-group">
+        <label for="label-marker" class="col-md-4">Label:</label>
+        <input type="text" class="form-control col-md-8" id="label-marker" placeholder="Label du marker" [(ngModel)]="markerInput.label"/>
+      </div>
+      <div class="btn-container">
+        <button class="btn btn-success" (click)="addMarker()">Ajouter marker</button>
+      </div>
+    </div>
+    <app-places (onPlaceSelected)="goToSearch($event)"></app-places>
+  </div>
+  <div class="col-md-8">
+    <agm-map [latitude]="coordinates.latitude" [longitude]="coordinates.longitude" (centerChange)="updateCenter($event)" (mapClick)=setMarkerCoordinates($event) (mapReady)="loadAPIWrapper($event)">
+      <app-marker [marker]="marker" *ngFor="let marker of markers"></app-marker>
+    </agm-map>
+  </div>
+</div>
