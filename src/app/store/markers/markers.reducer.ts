@@ -31,7 +31,7 @@ namespace Actions {
 
 type AvailableActions = Actions.Add | Actions.Remove | Actions.Clear;
 
-export const markerReducer: ActionReducer<State> = (state = intitialState, action: AvailableActions) => {
+export function markerReducer(state = intitialState, action: AvailableActions): State {
   switch (action.type) {
     case ADD:
       return new State([...state.markers, action.payload]);
