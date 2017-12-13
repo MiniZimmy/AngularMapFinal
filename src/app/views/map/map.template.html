@@ -37,7 +37,7 @@
   </div>
   <div class="col-md-8">
     <agm-map [latitude]="coordinates.latitude" [longitude]="coordinates.longitude" (centerChange)="updateCenter($event)" (mapClick)=setMarkerCoordinates($event) (mapReady)="loadAPIWrapper($event)">
-      <app-marker [marker]="marker" *ngFor="let marker of markers"></app-marker>
+      <app-marker [marker]="marker" *ngFor="let marker of (markers$ | async)"></app-marker>
     </agm-map>
   </div>
 </div>

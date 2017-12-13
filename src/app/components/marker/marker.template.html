@@ -2,9 +2,12 @@
   <agm-info-window *ngIf="marker.title">
     <div class="container row">
       <img class="col-md-8" src="{{marker.picture}}" *ngIf="marker.picture"/>
-      <div class="col">
-        <h1 class="marker-title">{{marker.title}}</h1>
-        <p class="marker-label" *ngIf="marker.label">{{marker.label}}</p>
+      <div class="col marker-content">
+        <div>
+          <h1 class="marker-title">{{marker.title}}</h1>
+          <p class="marker-label" *ngIf="marker.label">{{marker.label}}</p>
+        </div>
+        <button class="btn btn-danger" (click)="remove()">Supprimer</button>
       </div>
     </div>
   </agm-info-window>

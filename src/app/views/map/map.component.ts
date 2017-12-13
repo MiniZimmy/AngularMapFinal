@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { ICoordinates, Coordinates, IMarker, Marker } from './../../models';
 import { MarkerService } from './../../services';
 
+import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
+
 declare var google: any;
 
 @Component({
@@ -18,14 +21,14 @@ export class MapComponent implements OnInit {
 
   public markerInput: IMarker;
 
-  public markers: Marker[];
+  public markers$: Observable<Marker[]>;
 
   private detailsService;
 
   private place: any;
 
   constructor (private markerService: MarkerService, private mapsApiLoader: MapsAPILoader) {
-    this.markers = markerService.markers;
+    this.markers$ = markerService.markers$;
   }
 
   private getGeolocation (): void {
@@ -56,7 +59,6 @@ export class MapComponent implements OnInit {
       placeId: searchedPlace.place_id
     }, (place, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
-        console.log(place);
         this.coordinates = {
           latitude: place.geometry.location.lat(),
           longitude: place.geometry.location.lng()
@@ -86,9 +88,6 @@ export class MapComponent implements OnInit {
     this.detailsService = new google.maps.places.PlacesService(map);
   }
 
-  // private save() {
-  //   this.map.panTo(new google.maps.LatLng(this.coordinates.latitude, this.coordinates.longitude));
-  // }
 
   public updateCenter ({lat, lng}) {
     this.coordinates = {
@@ -101,10 +100,6 @@ export class MapComponent implements OnInit {
     if (!place) {
       return;
     }
-    // this.coordinates = {
-    //   latitude: place.geometry.location.lat(),
-    //   longitude: place.geometry.location.lng()
-    // };
     this.addMarkerOnSearch(place);
   }
 

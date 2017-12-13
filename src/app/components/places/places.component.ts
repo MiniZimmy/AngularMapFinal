@@ -35,7 +35,6 @@ export class PlacesComponent implements OnInit {
   }
 
   public placeSelected(place) {
-    this.searchTerms.next(place.description);
     this.onPlaceSelected.emit(place);
   }
 
@@ -51,6 +50,9 @@ export class PlacesComponent implements OnInit {
       distinctUntilChanged(),
       switchMap((term: string) => {
         const predictions = (input, callback) => {
+          if (input === '') {
+            return callback();
+          }
           return this.service.getQueryPredictions({ input: input }, (r, status) => {
             if (status !== google.maps.places.PlacesServiceStatus.OK) {
               return callback();

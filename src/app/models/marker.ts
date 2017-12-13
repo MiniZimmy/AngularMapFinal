@@ -26,4 +26,13 @@ export class Marker {
     this.picture = marker.picture;
   }
 
+  public equals(marker: Marker) {
+    if (!marker) {
+      return false;
+    }
+    return marker.coordinates.equals(this.coordinates) &&
+           marker.title === this.title &&
+           marker.label === this.label;
+  }
+
 }

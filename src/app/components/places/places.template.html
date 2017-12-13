@@ -2,7 +2,7 @@
   <h2>Recherche de lieu</h2>
   <input type="text" class="form-control" #searchBox id="search-box" placeholder="Chercher un lieu" (keyup)="search(searchBox.value)" />
   <ul class="suggestions list-group" *ngIf="places$ | async as places">
-    <li class="list-group-item" *ngFor="let place of places" (click)="placeSelected(place)">
+    <li class="list-group-item" *ngFor="let place of places" (click)="placeSelected(place); searchBox.value=place.description">
       {{place.description}}
     </li>
   </ul>

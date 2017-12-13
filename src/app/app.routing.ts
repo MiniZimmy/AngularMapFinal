@@ -8,4 +8,4 @@ const routes: Routes = [
   {path: '**', redirectTo: 'home'}
 ];
 
-export const APP_ROUTING: ModuleWithProviders = RouterModule.forRoot(routes, { enableTracing: true });
+export const APP_ROUTING: ModuleWithProviders = RouterModule.forRoot(routes);

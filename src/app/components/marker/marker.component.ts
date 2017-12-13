@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Coordinates, Marker } from './../../models';
+import { MarkerService } from './../../services';
 
 @Component({
   selector: 'app-marker',
@@ -10,7 +11,11 @@ export class MarkerComponent {
 
   @Input() public marker: Marker;
 
-  constructor () {
+  constructor (private markerService: MarkerService) {
+  }
+
+  public remove() {
+    this.markerService.removeMarker(this.marker);
   }
 
 }

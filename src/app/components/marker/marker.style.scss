@@ -1,15 +1,28 @@
 .container {
   padding-top: .7rem;
-  margin-left: 0;
+  margin: 0;
+  min-width: 13em;
   img {
     max-width: 66%;
   }
-  .marker-title {
-    color: #343434;
-    font-size: 1.1rem;
-  }
-  .marker-label {
-    color: #343434;
-    font-size: 0.9rem;
+  .marker-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    .marker-title {
+      color: #343434;
+      font-size: 1.1rem;
+    }
+    .marker-label {
+      color: #343434;
+      font-size: 0.9rem;
+    }
+    .btn {
+      float: right;
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 }

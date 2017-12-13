@@ -1,23 +1,26 @@
 import { Injectable } from '@angular/core';
-// import { Subject } from 'rxjs/Subject';
+import { Store } from '@ngrx/store';
+import { IState } from './../../store/state';
+import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
+
 import { Coordinates, IMarker, Marker } from './../../models';
 
-// import 'rxjs/add/operator/map';
-// import 'rxjs/add/operator/startWith';
 
 @Injectable()
 export class MarkerService {
 
-  // public markers$ = new Subject<Marker[]>();
-  public markers: Marker[] = [];
+  public markers$: Observable<Marker[]>;
 
-  constructor() {
-    // this.markers$.startWith([]);
+  constructor(private store: Store<IState>) {
+    this.markers$ = store.select((s) => s.markers['markers']);
   }
 
   public addMarker(marker: IMarker) {
-    this.markers.push(new Marker(marker));
-    // this.markers$.next(this.markers);
+    this.store.dispatch({
+      type: 'ADD',
+      payload: new Marker(marker)
+    });
   }
 
   public createAndAddMarker(data: { coordinates: Coordinates, title: string, label: string, draggable?: boolean}): void {
@@ -29,12 +32,17 @@ export class MarkerService {
     }));
   }
 
-  // public deleteMarker(c: Coordinates) {
-  //   this.markers$.map((markers) => {
-  //     const markerIdx = markers.findIndex((el) => el.coordinates.equals(c));
-  //     markers.splice(markerIdx, 1);
-  //     this.markers$.next(markers);
-  //   });
-  // }
+  public removeMarker(marker: Marker) {
+    this.store.dispatch({
+      type: 'REMOVE',
+      payload: marker
+    });
+  }
+
+  public removeAllMarkers() {
+    this.store.dispatch({
+      type: 'CLEAR'
+    });
+  }
 
 }

@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { Header } from './components';
 
 import { AppComponent } from './app.component';
 import { APP_ROUTING } from './app.routing';
-
+import { APP_STORE } from './store';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,9 @@ import { APP_ROUTING } from './app.routing';
   ],
   imports: [
     BrowserModule, APP_ROUTING,
-    Header
+    Header,
+    APP_STORE,
+    StoreDevtoolsModule.instrument({maxAge: 5})
   ],
   providers: [],
   bootstrap: [AppComponent]
